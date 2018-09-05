@@ -1,3 +1,5 @@
+process.env.DEBUG = 'express:*'
+
 const express = require('express')
 // const expressVue = require('express-vue')
 
