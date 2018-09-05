@@ -4,7 +4,8 @@
   "description": "Minecraft status website, with things such as an online / offline UUID checker, server ping / query, skins, and more",
   "main": "index.js",
   "scripts": {
-    "test": "standard"
+    "test": "standard",
+    "fix": "standard --fix"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   "homepage": "https://github.com/crazy2g/minecraft#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "express-vue": "^5.7.1",
     "vue": "^2.5.17"
   },
   "devDependencies": {
