@@ -26,6 +26,8 @@
   "dependencies": {
     "express": "^4.16.3",
     "express-vue": "^5.7.1",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5",
     "vue": "^2.5.17"
   },
   "devDependencies": {
