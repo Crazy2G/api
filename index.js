@@ -17,6 +17,7 @@ const start = (port) => {
   port = port || options.port
 
   app.use(express.json())
+  app.set('trust proxy', true)
 
   app.listen(port, () => {
     log(`Listening on port ${port}`, 'API')
