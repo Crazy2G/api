@@ -1,4 +1,5 @@
 const rp = require('request-promise-native')
+const servers = require('../resources/MinecraftServers.json')
 
 const convertUUID = (user) => {
   return new Promise((resolve) => {
@@ -62,8 +63,17 @@ const getSkin = (user) => {
   })
 }
 
+const getStatus = () => {
+  return Promise.all(servers.map(async ({ url, name }) => {
+    var response = await rp.head({ url, simple: false, resolveWithFullResponse: true, timeout: 5000, time: true }).catch(e => e)
+    var online = (response.statusCode === 200 || response.statusCode === 404 || response.statusCode === 403) ? response.elapsedTime : false
+    return { url, name, online }
+  }))
+}
+
 module.exports.convertUUID = convertUUID
 module.exports.getAvatar = getAvatar
 module.exports.getHead = getHead
 module.exports.getBody = getBody
 module.exports.getSkin = getSkin
+module.exports.getStatus = getStatus

@@ -56,6 +56,11 @@ module.exports = class Minecraft extends Route {
       }
     })
 
+    router.get('/status', async (req, res) => {
+      const status = await MinecraftUtils.getStatus()
+      res.status(200).json(status)
+    })
+
     return router
   }
 }

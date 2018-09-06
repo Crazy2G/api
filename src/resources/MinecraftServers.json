@@ -1,0 +1,9 @@
+[
+  { "name": "Minecraft.net", "url": "https://minecraft.net/" },
+  { "name": "Mojang accounts website", "url": "https://account.mojang.com/" },
+  { "name": "Authentication service", "url": "https://authserver.mojang.com/" },
+  { "name": "Multiplayer session service", "url": "https://sessionserver.mojang.com/" },
+  { "name": "Minecraft skins", "url": "https://textures.minecraft.net/" },
+  { "name": "Mojang API", "url": "https://api.mojang.com/" },
+  { "name": "Mojang website", "url": "https://mojang.com/" }
+]
