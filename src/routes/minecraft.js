@@ -1,10 +1,10 @@
 const { Route, MinecraftUtils } = require('../index')
 const { Router } = require('express')
 
-module.exports = class Api extends Route {
+module.exports = class Minecraft extends Route {
   constructor (client) {
     super(client)
-    this.name = 'api'
+    this.name = 'minecraft'
   }
 
   load () {

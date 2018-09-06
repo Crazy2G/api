@@ -1,16 +1,13 @@
 process.env.DEBUG = 'express:*'
 
 const express = require('express')
-// const expressVue = require('express-vue')
-
-// const expressVueMiddleware = expressVue.init()
 const app = express()
 
 const { Route, FileUtils } = require('./src/')
 
 const options = {
   port: process.env.PORT || 1591,
-  url: process.env.URL || 'https://minecraft.c2g.space/'
+  url: process.env.URL || 'https://api.c2g.space/'
 }
 
 let expressApp = null
@@ -20,10 +17,9 @@ const start = (port) => {
   port = port || options.port
 
   app.use(express.json())
-  // app.use(expressVueMiddleware)
 
   app.listen(port, () => {
-    log(`Listening on port ${port}`, 'Website')
+    log(`Listening on port ${port}`, 'API')
     expressApp = app
   })
 
@@ -59,4 +55,4 @@ const initializeRoutes = (dirPath) => {
   }, this.logError)
 }
 
-start().then(() => log(`${options.url} is being served successfully on port ${options.port}`, 'Website')).catch(logError)
+start().then(() => log(`${options.url} is being served successfully on port ${options.port}`, 'API')).catch(logError)

@@ -1,7 +1,7 @@
 {
-  "name": "minecraft",
+  "name": "api",
   "version": "1.0.0-alpha",
-  "description": "Minecraft status website, with things such as an online / offline UUID checker, server ping / query, skins, and more",
+  "description": "API used for all of Crazy2G's applications and websites",
   "main": "index.js",
   "scripts": {
     "test": "standard",
@@ -9,26 +9,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/crazy2g/minecraft.git"
+    "url": "git+https://github.com/crazy2g/api.git"
   },
   "keywords": [
-    "minecraft",
-    "minecraft-status",
-    "vue",
+    "api",
     "javascript"
   ],
   "author": "https://github.com/bolsomito",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/crazy2g/minecraft/issues"
+    "url": "https://github.com/crazy2g/api/issues"
   },
-  "homepage": "https://github.com/crazy2g/minecraft#readme",
+  "homepage": "https://github.com/crazy2g/api#readme",
   "dependencies": {
     "express": "^4.16.3",
-    "express-vue": "^5.7.1",
     "request": "^2.88.0",
-    "request-promise-native": "^1.0.5",
-    "vue": "^2.5.17"
+    "request-promise-native": "^1.0.5"
   },
   "devDependencies": {
     "eslint-config-standard": "^12.0.0",
