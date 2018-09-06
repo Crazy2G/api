@@ -51,7 +51,7 @@ module.exports = class Minecraft extends Route {
     router.get('/skin/:user', async (req, res) => {
       if (!req.params.user) return res.status(400).json({ message: 'You need to specify a user to grab the skin from' })
       else {
-        const skin = await MinecraftUtils.getHead(req.params.user)
+        const skin = await MinecraftUtils.getSkin(req.params.user)
         res.status(200).set('Content-Type', 'image/png').send(skin)
       }
     })
