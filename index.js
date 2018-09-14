@@ -7,7 +7,7 @@ const { Route, FileUtils } = require('./src/')
 
 const options = {
   port: process.env.PORT || 1591,
-  url: process.env.URL || 'https://api.c2g.space'
+  url: process.env.URL || 'https://api.c2g.space/'
 }
 
 let expressApp = null
