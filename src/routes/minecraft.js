@@ -24,7 +24,7 @@ module.exports = class Minecraft extends Route {
       res.status(200).json({ message: 'OK' })
     })
 
-    router.get('/teapot', (req, res => {
+    router.get('/teapot', (req, res) => {
       res.status(418).json({ message: 'I\'m a teapot' })
     })
 
