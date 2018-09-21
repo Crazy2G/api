@@ -24,10 +24,6 @@ module.exports = class Minecraft extends Route {
       res.status(200).json({ message: 'OK' })
     })
 
-    router.get('/teapot', (req, res) => {
-      res.status(418).json({ message: 'I\'m a teapot' })
-    })
-
     router.get('/avatar/:user', async (req, res) => {
       if (!req.params.user) return res.status(400).json({ message: 'You need to specify a user to grab the avatar from' })
       else {
