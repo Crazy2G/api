@@ -13,6 +13,7 @@ module.exports = class Minecraft extends Route {
     router.get('/', (req, res) => {
       res.status(200).json({ endpoints: [
         'GET /ping',
+        'GET /status',
         'GET /avatar/:user',
         'GET /head/:user',
         'GET /body/:user',

@@ -66,7 +66,7 @@ const getSkin = (user) => {
 const getStatus = () => {
   return Promise.all(servers.map(async ({ url, name }) => {
     var response = await rp.head({ url, simple: false, resolveWithFullResponse: true, timeout: 5000, time: true }).catch(e => e)
-    var online = (response.statusCode === 200 || response.statusCode === 404 || response.statusCode === 403) ? response.elapsedTime : false
+    var online = (response.statusCode === 200 || response.statusCode === 404 || response.statusCode === 403) ? `${response.elapsedTime}ms` : false
     return { url, name, online }
   }))
 }
