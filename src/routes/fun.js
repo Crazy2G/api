@@ -14,7 +14,7 @@ module.exports = class Fun extends Route {
       res.status(200).json({
         endpoints: [
           'GET /ping',
-          'GET /vaporwave/:text'
+          'GET /vaporwave'
         ]
       })
     })
@@ -23,10 +23,10 @@ module.exports = class Fun extends Route {
       res.status(200).json({ message: 'OK' })
     })
 
-    router.get('/vaporwave/:text', (req, res) => {
-      if (!req.params.text) return res.status(400).json({ message: 'You need to specify a text to vaporwave-ify' })
+    router.get('/vaporwave', (req, res) => {
+      if (!req.query.text) return res.status(400).json({ message: 'You need to specify a text parameter to vaporwave-ify' })
       else {
-        const text = req.params.text.split('').map(Fun.charToFullWidth).join('')
+        const text = req.query.text.split('').map(Fun.charToFullWidth).join('')
         res.status(200).json({ text })
       }
     })

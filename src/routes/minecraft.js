@@ -14,10 +14,10 @@ module.exports = class Minecraft extends Route {
       res.status(200).json({ endpoints: [
         'GET /ping',
         'GET /status',
-        'GET /avatar/:user',
-        'GET /head/:user',
-        'GET /body/:user',
-        'GET /skin/:user'
+        'GET /avatar',
+        'GET /head',
+        'GET /body',
+        'GET /skin'
       ] })
     })
 
@@ -25,34 +25,34 @@ module.exports = class Minecraft extends Route {
       res.status(200).json({ message: 'OK' })
     })
 
-    router.get('/avatar/:user', async (req, res) => {
-      if (!req.params.user) return res.status(400).json({ message: 'You need to specify a user to grab the avatar from' })
+    router.get('/avatar', async (req, res) => {
+      if (!req.query.user) return res.status(400).json({ message: 'You need to specify a user parameter to grab the avatar from' })
       else {
-        const avatar = await MinecraftUtils.getAvatar(req.params.user)
+        const avatar = await MinecraftUtils.getAvatar(req.query.user)
         res.status(200).set('Content-Type', 'image/png').send(avatar)
       }
     })
 
-    router.get('/head/:user', async (req, res) => {
-      if (!req.params.user) return res.status(400).json({ message: 'You need to specify a user to grab the head from' })
+    router.get('/head', async (req, res) => {
+      if (!req.query.user) return res.status(400).json({ message: 'You need to specify a user parameter to grab the head from' })
       else {
-        const head = await MinecraftUtils.getHead(req.params.user)
+        const head = await MinecraftUtils.getHead(req.query.user)
         res.status(200).set('Content-Type', 'image/png').send(head)
       }
     })
 
-    router.get('/body/:user', async (req, res) => {
-      if (!req.params.user) return res.status(400).json({ message: 'You need to specify a user to grab the body from' })
+    router.get('/body', async (req, res) => {
+      if (!req.query.user) return res.status(400).json({ message: 'You need to specify a user parameter to grab the body from' })
       else {
-        const body = await MinecraftUtils.getBody(req.params.user)
+        const body = await MinecraftUtils.getBody(req.query.user)
         res.status(200).set('Content-Type', 'image/png').send(body)
       }
     })
 
-    router.get('/skin/:user', async (req, res) => {
-      if (!req.params.user) return res.status(400).json({ message: 'You need to specify a user to grab the skin from' })
+    router.get('/skin', async (req, res) => {
+      if (!req.query.user) return res.status(400).json({ message: 'You need to specify a user parameter to grab the skin from' })
       else {
-        const skin = await MinecraftUtils.getSkin(req.params.user)
+        const skin = await MinecraftUtils.getSkin(req.query.user)
         res.status(200).set('Content-Type', 'image/png').send(skin)
       }
     })
