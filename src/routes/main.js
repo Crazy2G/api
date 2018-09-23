@@ -11,9 +11,13 @@ module.exports = class Main extends Route {
     const router = Router()
 
     router.get('/', (req, res) => {
-      res.status(200).json({ endpoints: [
-        'GET /minecraft'
-      ] })
+      res.status(200).json({
+        endpoints: [
+          'GET /fun',
+          'GET /memes',
+          'GET /minecraft'
+        ]
+      })
     })
 
     router.get('/ping', (req, res) => {

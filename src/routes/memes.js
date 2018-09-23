@@ -11,9 +11,16 @@ module.exports = class Memes extends Route {
     const router = Router()
 
     router.get('/', (req, res) => {
-      res.status(200).json({ endpoints: [
-        'GET /tiodopave'
-      ] })
+      res.status(200).json({
+        endpoints: [
+          'GET /ping',
+          'GET /tiodopave'
+        ]
+      })
+    })
+
+    router.get('/ping', (req, res) => {
+      res.status(200).json({ message: 'OK' })
     })
 
     router.get('/tiodopave', (req, res) => {

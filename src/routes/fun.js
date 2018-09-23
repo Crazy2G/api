@@ -11,9 +11,16 @@ module.exports = class Fun extends Route {
     const router = Router()
 
     router.get('/', (req, res) => {
-      res.status(200).json({ endpoints: [
-        'GET /vaporwave/:text'
-      ] })
+      res.status(200).json({
+        endpoints: [
+          'GET /ping',
+          'GET /vaporwave/:text'
+        ]
+      })
+    })
+
+    router.get('/ping', (req, res) => {
+      res.status(200).json({ message: 'OK' })
     })
 
     router.get('/vaporwave/:text', (req, res) => {
