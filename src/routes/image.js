@@ -32,7 +32,7 @@ module.exports = class Image extends Route {
         const quality = req.body.quality || 1
 
         const image = await Jimp.read(imageURL).then(img => img.quality(quality))
-        res.status(200).set('Content-Type', 'image/jpeg').send(await image.getBufferAsync(Jimp.MIME_JPEG))
+        res.status(200).set('Content-Type', 'image/png').send(await image.getBufferAsync(Jimp.MIME_PNG))
       }
     })
 
