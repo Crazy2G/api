@@ -15,7 +15,7 @@ const getAvatar = (user) => {
   return new Promise((resolve) => {
     convertUUID(user).then(uuid => {
       rp.get({
-        uri: `https://crafatar.com/avatars/${uuid}.png`,
+        uri: `https://crafatar.com/avatars/${uuid}.png?overlay=true`,
         encoding: null
       }).then(image => {
         resolve(image)
@@ -28,7 +28,7 @@ const getHead = (user) => {
   return new Promise((resolve) => {
     convertUUID(user).then(uuid => {
       rp.get({
-        uri: `https://crafatar.com/renders/head/${uuid}.png`,
+        uri: `https://crafatar.com/renders/head/${uuid}.png?overlay=true`,
         encoding: null
       }).then(image => {
         resolve(image)
@@ -41,7 +41,7 @@ const getBody = (user) => {
   return new Promise((resolve) => {
     convertUUID(user).then(uuid => {
       rp.get({
-        uri: `https://crafatar.com/renders/body/${uuid}.png`,
+        uri: `https://crafatar.com/renders/body/${uuid}.png?overlay=true`,
         encoding: null
       }).then(image => {
         resolve(image)
