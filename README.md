@@ -1,2 +1,3 @@
-# crazy2g/api
-API used for all of Crazy2G's applications and websites
+<div align="center">
+  <h1>https://api.c2g.space</h1>
+</div>
