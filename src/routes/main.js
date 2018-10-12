@@ -1,5 +1,6 @@
 const { Route } = require('../index')
 const { Router } = require('express')
+const cluster = require('cluster')
 
 module.exports = class Main extends Route {
   constructor (client) {
@@ -22,6 +23,11 @@ module.exports = class Main extends Route {
 
     router.get('/ping', (req, res) => {
       res.status(200).json({ message: 'OK' })
+    })
+
+    router.get('/c12n', (req, res) => {
+      const worker = cluster.worker.id
+      res.status(200).json({ worker })
     })
 
     app.use(this.path, router)
