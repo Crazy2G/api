@@ -26,7 +26,7 @@ module.exports = class Main extends Route {
     })
 
     router.get('/c12n', (req, res) => {
-      const worker = cluster.worker.id
+      const worker = cluster.worker
       res.status(200).json({ worker })
     })
 
