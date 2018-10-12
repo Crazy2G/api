@@ -8,7 +8,7 @@ module.exports = class Image extends Route {
     this.name = 'image'
   }
 
-  load () {
+  register (app) {
     const router = Router()
 
     router.get('/', (req, res) => {
@@ -75,6 +75,6 @@ module.exports = class Image extends Route {
       }
     })
 
-    return router
+    app.use(this.path, router)
   }
 }

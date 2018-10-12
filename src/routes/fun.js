@@ -7,7 +7,7 @@ module.exports = class Fun extends Route {
     this.name = 'fun'
   }
 
-  load () {
+  register (app) {
     const router = Router()
 
     router.get('/', (req, res) => {
@@ -31,7 +31,7 @@ module.exports = class Fun extends Route {
       }
     })
 
-    return router
+    app.use(this.path, router)
   }
 
   static charToFullWidth (char) {

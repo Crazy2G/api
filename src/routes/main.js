@@ -7,7 +7,7 @@ module.exports = class Main extends Route {
     this.name = ''
   }
 
-  load () {
+  register (app) {
     const router = Router()
 
     router.get('/', (req, res) => {
@@ -24,6 +24,6 @@ module.exports = class Main extends Route {
       res.status(200).json({ message: 'OK' })
     })
 
-    return router
+    app.use(this.path, router)
   }
 }

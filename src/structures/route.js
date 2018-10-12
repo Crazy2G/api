@@ -4,23 +4,24 @@ module.exports = class Route {
 
     this.name = 'RouteName'
 
+    this.subRoutes = null
     this.requirements = null
     this.parentRoute = parentRoute
   }
 
   get path () {
-    return `${this.parentRoute || ''}/${this.name}`
+    return `${this.parentRoute ? this.parentRoute.path : ''}/${this.name}`
   }
 
-  load () {
-    return null
+  _register (app) {
+    if (this.subRoutes) {
+      this.subRoutes.forEach(route => {
+        route._register(app)
+      })
+    }
+
+    this.register(app)
   }
 
-  canLoad () {
-    return true
-  }
-
-  handleRequirements (args) {
-    return this.requirements ? this.requirements.handle(args) : true
-  }
+  register (app) {}
 }

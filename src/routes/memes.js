@@ -7,7 +7,7 @@ module.exports = class Memes extends Route {
     this.name = 'memes'
   }
 
-  load () {
+  register (app) {
     const router = Router()
 
     router.get('/', (req, res) => {
@@ -29,6 +29,6 @@ module.exports = class Memes extends Route {
       res.status(200).json({ piada })
     })
 
-    return router
+    app.use(this.path, router)
   }
 }

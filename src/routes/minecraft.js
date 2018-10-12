@@ -7,7 +7,7 @@ module.exports = class Minecraft extends Route {
     this.name = 'minecraft'
   }
 
-  load () {
+  register (app) {
     const router = Router()
 
     router.get('/', (req, res) => {
@@ -62,6 +62,6 @@ module.exports = class Minecraft extends Route {
       res.status(200).json(status)
     })
 
-    return router
+    app.use(this.path, router)
   }
 }
