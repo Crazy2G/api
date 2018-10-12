@@ -1,6 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const cluster = require('cluster')
+const responseTime = require('response-time')
 
 const app = express()
 
@@ -24,8 +25,8 @@ module.exports = class API {
         cluster.fork()
       }
 
-      cluster.on('exit', (worker, code, signal) => {
-        this.log(`Worker ${worker.process.pid} died with code ${code} and signal ${signal}`, 'Clusters')
+      cluster.on('exit', (worker, code) => {
+        this.log(`Worker ${worker.process.pid} died with code ${code}`, 'Clusters')
         cluster.fork()
       })
     } else {
@@ -35,6 +36,7 @@ module.exports = class API {
       url = url || this._options.url
 
       app.use(express.json())
+      app.use(responseTime())
       app.use(morgan('combined'))
       app.set('trust proxy', true)
 
