@@ -25,13 +25,13 @@ module.exports = class API {
     return this.initializeRoutes('src/routes/')
   }
 
-  static log (...args) {
+  log (...args) {
     const message = args[0]
     const tags = args.slice(1).map(t => `[${t}]`)
     console.log(...tags, message)
   }
 
-  static logError (...args) {
+  logError (...args) {
     const tags = args.length > 1 ? args.slice(0, -1).map(t => `[${t}]`) : []
     console.error('[Error]', ...tags, args[args.length - 1])
   }
