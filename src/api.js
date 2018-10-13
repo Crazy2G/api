@@ -6,6 +6,7 @@ const responseTime = require('response-time')
 const app = express()
 
 const { Route, FileUtils } = require('./')
+const { MongoDB } = require('./database')
 
 const cpuCores = require('os').cpus().length
 
@@ -46,6 +47,7 @@ module.exports = class API {
       })
     }
 
+    this.initializeDatabase(MongoDB, { useNewUrlParser: true })
     return this.initializeRoutes('src/routes/')
   }
 
@@ -73,5 +75,15 @@ module.exports = class API {
       this.addRoute(new NewRoute(this))
       this.log(`${NewRoute.name} loaded.`, 'Routes')
     }, this.logError)
+  }
+
+  initializeDatabase (DBWrapper, options = {}) {
+    this.database = new DBWrapper(options)
+    this.database.connect()
+      .then(() => this.log('Database connection established!', 'DB'))
+      .catch(e => {
+        this.logError(e.message, 'DB')
+        this.database = null
+      })
   }
 }
