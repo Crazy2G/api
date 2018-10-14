@@ -4,7 +4,7 @@ module.exports = {
   // Application Schema
   Application: new Schema({
     _id: String,
-    acceptanceTimestamp: { type: Date, default: 0 },
+    acceptanceTimestamp: { type: Number, default: 0 },
     randomVerificationString: { type: String, default: '' },
     token: { type: String, default: '' }
   })
