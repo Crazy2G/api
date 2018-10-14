@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken')
-const moment = require('moment')
 
 module.exports = class ApiKeyUtils {
   constructor (client) {
@@ -9,7 +8,7 @@ module.exports = class ApiKeyUtils {
   registerApplication (name) {
     return this.client.database.applications.get(name).then(application => {
       const randomVerificationString = this.generateId(5)
-      const acceptanceTimestamp = moment().unix()
+      const acceptanceTimestamp = Math.floor(Date.now())
       const token = jwt.sign({ id: name, acceptanceTimestamp, randomVerificationString }, process.env.JWT_SECRET, { algorithm: 'HS256' })
 
       application.acceptanceTimestamp = acceptanceTimestamp
