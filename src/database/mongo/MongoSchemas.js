@@ -3,9 +3,9 @@ const { Schema } = require('mongoose')
 module.exports = {
   // Application Schema
   Application: new Schema({
-    name: String,
-    accepted: { type: Boolean, default: false },
+    _id: String,
     acceptanceTimestamp: { type: Date, default: 0 },
-    randomVerificationInteger: { type: String, required: true }
+    randomVerificationString: { type: String, default: '' },
+    token: { type: String, default: '' }
   })
 }
