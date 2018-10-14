@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "API used for all of Crazy2G's applications and websites",
   "main": "index.js",
   "scripts": {
@@ -29,6 +29,7 @@
     "@jimp/plugins": "^0.5.3",
     "@jimp/types": "^0.5.3",
     "express": "^4.16.3",
+    "figlet": "^1.2.1",
     "jimp": "^0.5.3",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.3.3",

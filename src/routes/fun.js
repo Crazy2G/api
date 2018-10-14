@@ -1,5 +1,6 @@
 const { Route } = require('../index')
 const { Router } = require('express')
+const figlet = require('figlet')
 
 module.exports = class Fun extends Route {
   constructor (client) {
@@ -14,7 +15,8 @@ module.exports = class Fun extends Route {
       res.status(200).json({
         endpoints: [
           'GET /ping',
-          'GET /vaporwave'
+          'GET /vaporwave',
+          'GET /asciify'
         ]
       })
     })
@@ -27,6 +29,15 @@ module.exports = class Fun extends Route {
       if (!req.query.text) return res.status(400).json({ message: 'You need to specify a text parameter to vaporwave-ify' })
       else {
         const text = req.query.text.split('').map(Fun.charToFullWidth).join('')
+        res.status(200).json({ text })
+      }
+    })
+
+    router.get('/asciify', (req, res) => {
+      if (!req.query.text) return res.status(400).json({ message: 'You need to specify a text parameter to asciify' })
+      else {
+        const font = req.query.font || 'Standard'
+        const text = figlet.textSync(req.query.text, { font })
         res.status(200).json({ text })
       }
     })
