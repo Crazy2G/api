@@ -5,4 +5,4 @@ const wrapper = new API({
   url: process.env.URL || 'localhost'
 })
 
-wrapper.start().then(() => wrapper.log('API initialized successfully', 'API')).catch(wrapper.logError)
+wrapper.start().catch(wrapper.logError)

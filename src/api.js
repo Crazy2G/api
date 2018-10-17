@@ -20,18 +20,18 @@ module.exports = class API {
 
   start (port, url) {
     if (cluster.isMaster) {
-      this.log(`Master ${process.pid} is running`, 'Clusters')
+      this.log(`Master is running`, process.pid, 'C12N')
 
       for (let i = 0; i < cpuCores; i++) {
         cluster.fork()
       }
 
       cluster.on('exit', (worker, code) => {
-        this.log(`Worker ${worker.process.pid} died with code ${code}`, 'Clusters')
+        this.log(`Worker died with code ${code}. Recreating...`, worker.process.pid, 'C12N')
         cluster.fork()
       })
     } else {
-      this.log(`Worker ${process.pid} started`, 'Clusters')
+      this.log(`Worker started`, process.pid, 'C12N')
 
       port = port || this._options.port || 1591
       url = url || this._options.url
@@ -42,7 +42,7 @@ module.exports = class API {
       app.set('trust proxy', true)
 
       app.listen(port, () => {
-        this.log(`Worker ${process.pid} is listening on port ${port}, using URL ${url}`, 'API')
+        this.log(`Listening on port ${port}, using URL ${url}`, process.pid, 'API')
         this.app = app
       })
     }
@@ -73,14 +73,14 @@ module.exports = class API {
     return FileUtils.requireDirectory(dirPath, (NewRoute) => {
       if (Object.getPrototypeOf(NewRoute) !== Route) return
       this.addRoute(new NewRoute(this))
-      this.log(`${NewRoute.name} loaded.`, 'Routes')
+      this.log(`${NewRoute.name} loaded.`, process.pid, 'Routes')
     }, this.logError)
   }
 
   initializeDatabase (DBWrapper, options = {}) {
     this.database = new DBWrapper(options)
     this.database.connect()
-      .then(() => this.log('Database connection established!', 'DB'))
+      .then(() => this.log('Database connection established!', process.pid, 'DB'))
       .catch(e => {
         this.logError(e.message, 'DB')
         this.database = null
