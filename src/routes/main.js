@@ -1,6 +1,5 @@
 const { Route, ApiKeyUtils } = require('../index')
 const { Router } = require('express')
-const cluster = require('cluster')
 
 module.exports = class Main extends Route {
   constructor (client) {
@@ -15,19 +14,16 @@ module.exports = class Main extends Route {
       res.status(200).json({
         endpoints: [
           'GET /fun',
+          'GET /image',
           'GET /memes',
-          'GET /minecraft'
+          'GET /minecraft',
+          'GET /misc'
         ]
       })
     })
 
     router.get('/ping', (req, res) => {
       res.status(200).json({ message: 'OK' })
-    })
-
-    router.get('/c12n', (req, res) => {
-      const worker = cluster.worker.id
-      res.status(200).json({ worker })
     })
 
     router.post('/registerApp', (req, res) => {
