@@ -33,7 +33,7 @@ module.exports = class Image extends Route {
         const intensity = req.body.intensity || 5
 
         const image = await JimpUtils.read(imageURL).then(img => img.blur(intensity))
-        res.status(200).set('Content-Type', 'image/png').send(await image.getBufferAsync(Jimp.MIME_PNG))
+        res.status(200).set('Content-Type', 'image/png').send(await image.getBufferAsync(JimpUtils.MIME_PNG))
       }
     })
 
@@ -45,7 +45,7 @@ module.exports = class Image extends Route {
         const intensity = req.body.intensity || 1.6
 
         const image = await JimpUtils.read(imageURL).then(img => img.fisheye({ r: intensity }))
-        res.status(200).set('Content-Type', 'image/png').send(await image.getBufferAsync(Jimp.MIME_PNG))
+        res.status(200).set('Content-Type', 'image/png').send(await image.getBufferAsync(JimpUtils.MIME_PNG))
       }
     })
 
@@ -57,7 +57,7 @@ module.exports = class Image extends Route {
         const quality = req.body.quality || 1
 
         const image = await JimpUtils.read(imageURL).then(img => img.quality(quality))
-        res.status(200).set('Content-Type', 'image/jpeg').send(await image.getBufferAsync(Jimp.MIME_JPEG))
+        res.status(200).set('Content-Type', 'image/jpeg').send(await image.getBufferAsync(JimpUtils.MIME_JPEG))
       }
     })
 
@@ -69,7 +69,7 @@ module.exports = class Image extends Route {
         const intensity = req.body.intensity || 5
 
         const image = await JimpUtils.read(imageURL).then(img => img.pixelate(intensity))
-        res.status(200).set('Content-Type', 'image/png').send(await image.getBufferAsync(Jimp.MIME_PNG))
+        res.status(200).set('Content-Type', 'image/png').send(await image.getBufferAsync(JimpUtils.MIME_PNG))
       }
     })
 
