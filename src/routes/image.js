@@ -1,4 +1,4 @@
-const { Route, JimpUtils } = require('../index')
+const { Route, JimpUtils, ApiKeyUtils } = require('../index')
 const { Router } = require('express')
 
 module.exports = class Image extends Route {
@@ -9,6 +9,7 @@ module.exports = class Image extends Route {
 
   register (app) {
     const router = Router()
+    const client = this.client
 
     router.get('/', (req, res) => {
       res.status(200).json({
@@ -23,6 +24,15 @@ module.exports = class Image extends Route {
 
     router.get('/ping', (req, res) => {
       res.status(200).json({ message: 'OK' })
+    })
+
+    router.use(async function (req, res, next) {
+      if (!req.headers['authorization']) return res.status(401).json({ message: 'No Authorization Header' })
+      else {
+        const token = req.headers['authorization']
+        new ApiKeyUtils(client).verifyApplicationToken(token).then(() => next())
+          .catch(() => res.status(401).json({ message: 'Invalid Token' }))
+      }
     })
 
     router.post('/blur', async (req, res) => {

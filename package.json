@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "API used for all of Crazy2G's applications and websites",
   "main": "index.js",
   "scripts": {

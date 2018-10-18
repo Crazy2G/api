@@ -1,10 +1,11 @@
-const { Route, ApiKeyUtils } = require('../index')
+const { Route, ApiKeyUtils, TokenMiddleware } = require('../index')
 const { Router } = require('express')
 
 module.exports = class Main extends Route {
   constructor (client) {
     super(client)
     this.name = ''
+    this.auth = new TokenMiddleware(this.client).auth()
   }
 
   register (app) {
