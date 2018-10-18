@@ -37,7 +37,7 @@ module.exports = class Image extends Route {
         res.status(200).set('Content-Type', 'image/png').send(await image.getBufferAsync(Jimp.MIME_PNG))
       }
     })
-    
+
     router.post('/fisheye', async (req, res) => {
       if (!req.body.image) return res.status(400).json({ message: 'You need to specify a image to fisheye from' })
       else {
