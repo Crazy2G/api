@@ -52,7 +52,7 @@ module.exports = class Image extends Route {
     router.post('/jpeg', async (req, res) => {
       if (!req.body.image) return res.status(400).json({ message: 'You need to specify a image to jpegify from' })
       else {
-        if (req.body.quality > 100 || req.body.quality < 0) return res.status(400).json({ message: 'Quality must be a number between 0 and 100' })
+        if (req.body.quality && (req.body.quality > 100 || req.body.quality < 0)) return res.status(400).json({ message: 'Quality must be a number between 0 and 100' })
         const imageURL = req.body.image
         const quality = req.body.quality || 1
 
