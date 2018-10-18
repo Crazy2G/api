@@ -13,7 +13,6 @@ module.exports = class Memes extends Route {
     router.get('/', (req, res) => {
       res.status(200).json({
         endpoints: [
-          'GET /ping',
           'GET /tiodopave'
         ]
       })

@@ -16,7 +16,6 @@ module.exports = class Misc extends Route {
     router.get('/', (req, res) => {
       res.status(200).json({
         endpoints: [
-          'GET /ping',
           'GET /status'
         ]
       })

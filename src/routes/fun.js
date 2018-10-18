@@ -14,9 +14,8 @@ module.exports = class Fun extends Route {
     router.get('/', (req, res) => {
       res.status(200).json({
         endpoints: [
-          'GET /ping',
-          'GET /vaporwave',
-          'GET /asciify'
+          'GET /asciify',
+          'GET /vaporwave'
         ]
       })
     })
@@ -25,19 +24,19 @@ module.exports = class Fun extends Route {
       res.status(200).json({ message: 'OK' })
     })
 
-    router.get('/vaporwave', (req, res) => {
-      if (!req.query.text) return res.status(400).json({ message: 'You need to specify a text parameter to vaporwave-ify' })
-      else {
-        const text = req.query.text.split('').map(Fun.charToFullWidth).join('')
-        res.status(200).json({ text })
-      }
-    })
-
     router.get('/asciify', (req, res) => {
       if (!req.query.text) return res.status(400).json({ message: 'You need to specify a text parameter to asciify' })
       else {
         const font = req.query.font || 'Standard'
         const text = figlet.textSync(req.query.text, { font })
+        res.status(200).json({ text })
+      }
+    })
+
+    router.get('/vaporwave', (req, res) => {
+      if (!req.query.text) return res.status(400).json({ message: 'You need to specify a text parameter to vaporwave-ify' })
+      else {
+        const text = req.query.text.split('').map(Fun.charToFullWidth).join('')
         res.status(200).json({ text })
       }
     })
