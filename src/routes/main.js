@@ -19,7 +19,8 @@ module.exports = class Main extends Route {
           'GET /memes',
           'GET /minecraft',
           'GET /misc',
-          'GET /privacy'
+          'GET /privacy',
+          'GET /speedtest'
         ]
       })
     })
@@ -40,8 +41,8 @@ module.exports = class Main extends Route {
       res.status(200).sendFile(path.join(__dirname, 'static/privacy-policy.html'))
     })
 
-    router.get('/favicon.ico', (req, res) => {
-      res.status(200).sendFile(path.join(__dirname, 'static/favicon.ico'))
+    router.get('/speedtest', (req, res) => {
+      res.status(200).sendFile(path.join(__dirname, 'static/speedtest.html'))
     })
 
     app.use(this.path, router)
