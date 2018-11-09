@@ -40,6 +40,10 @@ module.exports = class Main extends Route {
       res.status(200).sendFile(path.join(__dirname, 'static/privacy-policy.html'))
     })
 
+    router.get('/favicon.ico', (req, res) => {
+      res.status(200).sendFile(path.join(__dirname, 'static/favicon.ico'))
+    })
+
     app.use(this.path, router)
   }
 }
