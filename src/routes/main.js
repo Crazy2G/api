@@ -1,5 +1,6 @@
 const { Route, ApiKeyUtils } = require('../index')
 const { Router } = require('express')
+const path = require('path')
 
 module.exports = class Main extends Route {
   constructor (client) {
@@ -17,7 +18,8 @@ module.exports = class Main extends Route {
           'GET /image',
           'GET /memes',
           'GET /minecraft',
-          'GET /misc'
+          'GET /misc',
+          'GET /privacy'
         ]
       })
     })
@@ -32,6 +34,10 @@ module.exports = class Main extends Route {
       else {
         new ApiKeyUtils(this.client).registerApplication(req.query.name).then(token => res.status(200).json({ token }))
       }
+    })
+
+    router.get('/privacy', (req, res) => {
+      res.status(200).sendFile(path.join(__dirname, 'static/privacy-policy.html'))
     })
 
     app.use(this.path, router)
